@@ -1,0 +1,5 @@
+
+** Community Registry
+
+This is where submissions can be made to add, update, or remove a plugin from
+being bundled in with the base chat client.
