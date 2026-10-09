@@ -16,4 +16,4 @@ jobs:
         with:
           babashka-version: '1.3.190'
       - name: Run Registry Validator
-        run: bb aggregate.clj
+        run: bb scripts/aggregate.clj

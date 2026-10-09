@@ -21,7 +21,7 @@ jobs:
       - name: Fetch and Aggregate Modules
         env:
           CDN_BASE: "https://paradise-chat.github.io/community-repo"
-        run: bb aggregate.clj
+        run: bb scripts/aggregate.clj
 
       - name: Bundle Release Asset
         run: |
