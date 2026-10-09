@@ -1,18 +1,26 @@
-name: Build and Release Registry
+name: Build, Release, and Deploy Registry
 
 on:
   push:
     branches:
       - main
 
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
 jobs:
-  build-and-release:
+  build:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
     steps:
       - name: Checkout Community Repo
         uses: actions/checkout@v4
+
       - name: Setup Babashka
         uses: turtlequeue/setup-babashka@v1.7.0
         with:
@@ -34,3 +42,19 @@ jobs:
         run: |
           RELEASE_TAG="v$(date +%s)"
           gh release create $RELEASE_TAG dist/paradise-registry-bundle.tar.gz --title "Registry Update $RELEASE_TAG" --notes "Automated registry build"
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: './public'
+
+  deploy-pages:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
