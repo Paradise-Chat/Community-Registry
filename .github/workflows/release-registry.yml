@@ -19,6 +19,8 @@ jobs:
         with:
           version: '1.3.190'
 
+
+
       - name: Fetch and Aggregate Modules
         env:
           CDN_BASE: "https://paradise-chat.github.io/community-repo"
