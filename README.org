@@ -1,5 +1,34 @@
 
 ** Community Registry
 
-This is where submissions can be made to add, update, or remove a plugin from
+**** What is this?
+
+This is where submissions can be made to add, update, or remove an engine or plugin from
 being bundled in with the base chat client.
+
+
+**** Registries?
+
+The concept of registries to load external resources into a core framework isn't
+remotely novel, and the inspiration to do such for Paradise stems from a
+personal interest in Guix which has a clear distinction between say
+packages, services, and channels. Users can define a config that is
+personalized to them which pulls from channels to retrieve packages
+and services. They can add channels to extend the sources in which they can
+pull from.
+
+That said, in most concepts there is a 'root' or base channel in which
+we pull from.
+
+For Paradise, this is the community registry. It defines the base supported
+engines and plugins. Consider engines as our services and plugins as our
+packages. Each modify our core which is the client itself.
+
+What that implies, is that you can make your own core which is more or
+less restrictive on what is provided through it. The only limitation
+is that mobile users would have to opt into changing their base registry.
+
+
+
+
+
