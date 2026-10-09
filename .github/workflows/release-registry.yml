@@ -29,7 +29,7 @@ jobs:
 
       - name: Fetch and Aggregate Modules
         env:
-          CDN_BASE: "https://paradise-chat.github.io/community-repo"
+          CDN_BASE: "https://paradise-chat.github.io/community-registry"
         run: bb scripts/aggregate.clj
 
       - name: Bundle Release Asset
