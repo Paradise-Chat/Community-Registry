@@ -1,0 +1,37 @@
+name: Build and Release Registry
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout Community Repo
+        uses: actions/checkout@v4
+
+      - name: Setup Babashka
+        uses: babashka/setup-babashka@v2
+        with:
+          version: '1.3.190'
+
+      - name: Fetch and Aggregate Modules
+        env:
+          CDN_BASE: "https://paradise-chat.github.io/community-repo"
+        run: bb aggregate.clj
+
+      - name: Bundle Release Asset
+        run: |
+          mkdir -p dist
+          tar -czvf dist/paradise-registry-bundle.tar.gz -C public .
+
+      - name: Publish Release
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          RELEASE_TAG="v$(date +%s)"
+          gh release create $RELEASE_TAG dist/paradise-registry-bundle.tar.gz --title "Registry Update $RELEASE_TAG" --notes "Automated registry build"
