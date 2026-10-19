@@ -1,6 +1,6 @@
 {:repository "https://github.com/Paradise-Chat/Matrix-Engine"
  :branch "release"
- :commit "58a922c421502a0794bf1d220602b6c1f5e75e5a"
+ :commit "10bd5e67b3307f0496de8d20d3eb1d793a06d306"
  :name "Matrix Protocol"
  :author "Paradise Chat"
  :description "Official Matrix protocol engine."}
