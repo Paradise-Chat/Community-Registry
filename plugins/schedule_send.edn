@@ -1,6 +1,6 @@
 {:repository "https://github.com/Paradise-Chat/schedule-send"
  :branch "main"
- :commit "6594550ab9f216550fc349a35f255283e1a37350"
+ :commit "3e56afac018628b8188dcac052ca69fedfecda0e"
  :name "Schedule Send"
  :author "Paradise Chat"
  :description "Official Matrix Schedule Send."}
